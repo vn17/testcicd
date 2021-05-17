@@ -29,7 +29,6 @@ jobs:
       with:
         fetch-depth: 0
    
-    # Refer to Step 1 for more details
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       if: ${{ always() }}
@@ -38,7 +37,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     
-    # Refer to Step 2 for more details    
     - name: Checkout the CodeGuru Reviewer Action repository
       uses: actions/checkout@v2
       if: ${{ always() }}
@@ -52,9 +50,9 @@ jobs:
       uses: ./.github/vijejain/cicd-actions
       if: ${{ always() }} 
       with:
-        src_path: .        # Repository root 
-        build_path: target # build artifact(s) directory
-        s3_bucket: 'codeguru-reviewer-myactions-bucket'  # S3 Bucket with "codeguru-reviewer-*" prefix
+        src_path: .         
+        build_path: target 
+        s3_bucket: 'codeguru-reviewer-myactions-bucket'  
     
     - name: Upload review result
       if: ${{ always() }}

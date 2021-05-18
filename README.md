@@ -91,5 +91,3 @@ For more information about how to use CodeGuru Reviewer, see the [Amazon CodeGur
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
-Test

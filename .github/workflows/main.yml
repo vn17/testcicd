@@ -1,8 +1,6 @@
 name: TestFlow
 
 on:
-  push:
-    branches: [ '*' ]
   #pull_request:
     #branches: [ invalidBranch ]
   schedule: 

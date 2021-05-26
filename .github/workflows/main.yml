@@ -48,16 +48,16 @@ jobs:
       uses: actions/checkout@v2
       if: ${{ always() }}
       with:
-        repository: vijejain/cicd-actions
+        repository: vijejain/cicd-actions-bugbash
         ref: refs/heads/main
         token: ${{ secrets.TOKEN }}   # Required for Private Beta
         path: ./.github/vijejain/cicd-actions
 
     - name: AWS CodeGuru Reviewer Scanner
-      uses: ./.github/vijejain/cicd-actions
+      uses: ./.github/vijejain/cicd-actions-bugbash
       if: ${{ always() }} 
       with:
-        src_path: .         
+        source_path: .         
         build_path: target 
         s3_bucket: 'codeguru-reviewer-test-cicd-bucket'  
     

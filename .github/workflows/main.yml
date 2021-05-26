@@ -60,6 +60,7 @@ jobs:
         source_path: .         
         build_path: target 
         s3_bucket: 'codeguru-reviewer-test-cicd-bucket'  
+        event_name: push
     
     - name: Upload review result
       if: ${{ always() }}

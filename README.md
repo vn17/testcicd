@@ -5,7 +5,7 @@ This application is intended as a test case for Amazon CodeGuru Reviewer, a serv
 Note: For testing recommendations from different languages please switch to the relevant branch (Example: python).
 
 To get started with CodeGuru Reviewer, follow these steps.
-t
+
 ## Try CodeGuru Reviewer
 
 ### Step 1: Fork this repo

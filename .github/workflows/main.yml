@@ -1,4 +1,4 @@
-name: TestFlow1
+name: TestFlow
 
 on:
   push:

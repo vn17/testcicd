@@ -2,7 +2,7 @@ name: TestFlow
 
 on:
   push:
-    branches: [ random ]
+    branches: [ main ]
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '*/5 * * * *'   # Runs every 5 mins#
@@ -59,7 +59,7 @@ jobs:
       with:
         source_path: .         
         build_path: target 
-        s3_bucket: 'codeguru-reviewer-test-cicd-bucket'
+        s3_bucket: 'codeguru-reviewer-github-canary-beta-us-west-2'
     
     - name: Upload review result
       if: ${{ always() }}

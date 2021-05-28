@@ -61,7 +61,7 @@ jobs:
       with:
         source_path: .         
         build_path: target 
-        s3_bucket: codeguru-reviewer-test-cicd-bucket
+        s3_bucket: codeguru-reviewer-github-canary-beta-us-west-2
     
     - name: Upload review result
       if: ${{ always() }}

@@ -59,7 +59,7 @@ jobs:
       with:
         source_path: .         
         build_path: target 
-        s3_bucket: alpha-canary-bucket-alpha-us-east-1
+        s3_bucket: codeguru-reviewer-test-bucket-bugbash
     
     - name: Upload review result
       if: ${{ always() }}

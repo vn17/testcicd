@@ -1,6 +1,8 @@
 name: TestFlow
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   schedule:

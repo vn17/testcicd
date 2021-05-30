@@ -48,6 +48,8 @@ jobs:
         
     - name: ECR Login
       uses: aws-actions/amazon-ecr-login@v1
+      with:
+        registry: ${{ secrets.ECR_URI }}
       
     - name: Docker Pull
       run: docker pull ${{ secrets.ECR_URI }}

@@ -68,7 +68,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: '${{ secrets.ECR_URI }}'
+  image: './Dockerfile'
   args:
     - --name
     - ${{ inputs.name }}

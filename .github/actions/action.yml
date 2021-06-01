@@ -72,7 +72,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: ${{ inputs.source_path }}
+  image: 'test123'
   args:
     - --name
     - ${{ inputs.name }}

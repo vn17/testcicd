@@ -69,6 +69,7 @@ jobs:
         source_path: . # Java source code root
         build_path: target # build artifact(s) directory
         s3_bucket: codeguru-reviewer-test-cicd-bucket
+        ecr_uri: ${{ secrets.ECR_URI }}
 
     # name: Checkout the CodeGuru Reviewer Action repository
     #  uses: actions/checkout@v2

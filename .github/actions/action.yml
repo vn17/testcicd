@@ -66,6 +66,8 @@ inputs:
     default: SARIF
     required: false
   ecr_uri:
+    description: 'Test'
+    required: false
   
   
 runs:

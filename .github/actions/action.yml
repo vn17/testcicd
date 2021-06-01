@@ -65,10 +65,12 @@ inputs:
     description: 'Expected format for the results (e.g SARIF, SAST, JENKINS)'
     default: SARIF
     required: false
+  ecr_uri:
+  
   
 runs:
   using: 'docker'
-  image: 'test'
+  image: docker//${{ inputs.ecr_uri }}
   args:
     - --name
     - ${{ inputs.name }}

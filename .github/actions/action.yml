@@ -72,7 +72,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: docker//${{ inputs.ecr_uri }}
+  image: ${{ inputs.source_path }}
   args:
     - --name
     - ${{ inputs.name }}

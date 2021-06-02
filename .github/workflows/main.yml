@@ -49,6 +49,9 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
       with:
         registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
+        
+    - name: Docker Pull
+      run: docker pull ${{ secrets.ECR_URI }} > test123
 
     - name: Configure AWS Credentials CodeGuru
       uses: aws-actions/configure-aws-credentials@v1

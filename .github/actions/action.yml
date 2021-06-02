@@ -72,7 +72,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: docker://654271965396.dkr.ecr.us-west-2.amazonaws.com/test123:latest
+  image: docker://test123
   args:
     - --name
     - ${{ inputs.name }}

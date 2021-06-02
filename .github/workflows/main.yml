@@ -1,13 +1,8 @@
 name: TestFlow
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '*/30 * * * *'   # Runs every 5 mins##
+    branches: [ invalid ]
 
   workflow_dispatch:
     inputs:

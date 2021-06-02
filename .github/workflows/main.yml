@@ -50,9 +50,6 @@ jobs:
       with:
         registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
 
-    - name: Docker Pull
-      run: docker pull ${{ secrets.ECR_URI }}
-
     - name: Configure AWS Credentials CodeGuru
       uses: aws-actions/configure-aws-credentials@v1
       if: ${{ always() }}

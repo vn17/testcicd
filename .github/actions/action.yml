@@ -74,8 +74,6 @@ runs:
   using: 'docker'
   image: docker://codeguru:latest
   args:
-    - --name
-    - ${{ inputs.name }}
     - --source_path
     - ${{ inputs.source_path }}
     - --build_path

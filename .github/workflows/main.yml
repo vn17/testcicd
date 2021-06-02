@@ -53,7 +53,7 @@ jobs:
     - name: Docker Pull
       run: |
         docker pull ${{ secrets.ECR_URI }}
-        docker tag test123 ${{ secrets.ECR_URI }}
+        docker image tag codeguru:latest ${{ secrets.ECR_URI }}
 
     - name: Configure AWS Credentials CodeGuru
       uses: aws-actions/configure-aws-credentials@v1

@@ -1,4 +1,4 @@
-name: TestFlow
+name: CanaryTest
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'     
+        description: 'Log level'
         required: true
         default: 'debug'
       tags:
-        description: 'Test scenario tags'  
+        description: 'Test scenario tags'
 
 jobs:
   build:
@@ -19,74 +19,73 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
-    - name: Configure AWS Credentials ECR
-      uses: aws-actions/configure-aws-credentials@v1
-      if: ${{ always() }}
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
+      # name: Configure AWS Credentials ECR
+      #  uses: aws-actions/configure-aws-credentials@v1
+      #  if: ${{ always() }}
+      #  with:
+      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #    aws-region: us-west-2
 
-    - name: ECR Login
-      uses: aws-actions/amazon-ecr-login@v1
-      with:
-        registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
-        
-    - name: Docker Pull
-      run: |
-        docker pull ${{ secrets.ECR_URI }}
-        docker image tag ${{ secrets.ECR_URI }} codeguru:latest 
+      # name: ECR Login
+      #  uses: aws-actions/amazon-ecr-login@v1
+      #  with:
+      #    registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
 
-    - name: Configure AWS Credentials CodeGuru
-      uses: aws-actions/configure-aws-credentials@v1
-      if: ${{ always() }}
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-        
-    - name: AWS CodeGuru Reviewer
-      uses: ./.github/actions
-      if: ${{ always() }}
-      with:          
-        name: 'test123456'
-        source_path: . # Java source code root
-        build_path: target # build artifact(s) directory
-        s3_bucket: codeguru-reviewer-test-cicd-bucket
+      # name: Docker Pull
+      #  run: |
+      #    docker pull ${{ secrets.ECR_URI }}
+      #    docker image tag ${{ secrets.ECR_URI }} codeguru:latest
 
-    # name: Checkout the CodeGuru Reviewer Action repository
-    #  uses: actions/checkout@v2
-    #  if: ${{ always() }}
-    #  with:
-    #    repository: vijejain/cicd-actions-bugbash
-    #    ref: refs/heads/main
-    #    token: ${{ secrets.TOKEN }}   # Required for Private Beta
-    #    path: ./.github/vijejain/cicd-actions-bugbash
+      - name: Configure AWS Credentials CodeGuru
+        uses: aws-actions/configure-aws-credentials@v1
+        if: ${{ always() }}
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
 
-    # name: AWS CodeGuru Reviewer Scanner
-    #  uses: ./.github/vijejain/cicd-actions-bugbash
-    #  if: ${{ always() }} 
-    #  with:
-    #    source_path: .         
-    #    build_path: target 
-    #    s3_bucket: codeguru-reviewer-test-cicd-bucket
+      - name: Checkout the CodeGuru Reviewer Action repository
+        uses: actions/checkout@v2
+        if: ${{ always() }}
+        with:
+          repository: vijejain/cicd-actions-bugbash
+          ref: refs/heads/main
+          token: ${{ secrets.TOKEN }}   # Required for Private Beta
+          path: ./.github/vijejain/cicd-actions-bugbash
 
-    # name: Upload review result
-    #  if: ${{ always() }}
-    #  uses: github/codeql-action/upload-sarif@v1
-    #  with:
-    #    sarif_file: codeguru-results.sarif.json
+      - name: AWS CodeGuru Reviewer Scanner
+        uses: ./.github/vijejain/cicd-actions-bugbash
+        if: ${{ always() }}
+        with:
+          name: 'test12345'
+          source_path: .
+          build_path: target
+          s3_bucket: codeguru-reviewer-test-cicd-bucket
 
+      - name: Upload review result
+        if: ${{ always() }}
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: codeguru-results.sarif.json
+
+      # name: AWS CodeGuru Reviewer Scanner
+      #  uses: ./.github/actions/action.yml
+      #  if: ${{ always() }}
+      #  with:
+      #    source_path: .
+      #    build_path: target
+      #    s3_bucket: BUCKET_NAME_PLACEHOLDER

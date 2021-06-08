@@ -73,7 +73,7 @@ jobs:
         with:
           name: 'test1234'
           source_path: .
-          build_path: invalidTarget
+          build_path: target
           s3_bucket: codeguru-reviewer-test-cicd-bucket
 
       - name: Upload review result

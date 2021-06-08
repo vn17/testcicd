@@ -71,9 +71,9 @@ jobs:
         uses: ./.github/vijejain/cicd-actions-bugbash
         if: ${{ always() }}
         with:
-          name: 'test12345'
+          name: 'test1234'
           source_path: .
-          build_path: target
+          build_path: invalidTarget
           s3_bucket: codeguru-reviewer-test-cicd-bucket
 
       - name: Upload review result

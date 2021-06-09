@@ -1,7 +1,7 @@
 name: CanaryTest
-#
+
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
   workflow_dispatch:
@@ -23,14 +23,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
 
       # name: Configure AWS Credentials ECR
       #  uses: aws-actions/configure-aws-credentials@v1
@@ -71,9 +63,9 @@ jobs:
         uses: ./.github/vijejain/cicd-actions-bugbash
         if: ${{ always() }}
         with:
-          name: 'test1234'
+          name: test1234
           source_path: .
-          build_path: target
+          build_path: buildFiles
           s3_bucket: codeguru-reviewer-test-cicd-bucket
 
       - name: Upload review result
@@ -86,6 +78,7 @@ jobs:
       #  uses: ./.github/actions/action.yml
       #  if: ${{ always() }}
       #  with:
+      #    name: test1234
       #    source_path: .
-      #    build_path: target
-      #    s3_bucket: BUCKET_NAME_PLACEHOLDER
+      #    build_path: buildFiles
+      #    s3_bucket: codeguru-reviewer-test-cicd-bucket

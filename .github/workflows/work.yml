@@ -55,10 +55,8 @@ jobs:
         with:
           sarif_file: codeguru-results.sarif.json
 
-      # name: AWS CodeGuru Reviewer Scanner
-      #  uses: ./.github/actions/action.yml
-      #  if: ${{ always() }}
-      #  with:
-      #    source_path: .
-      #    build_path: target
-      #    s3_bucket: BUCKET_NAME_PLACEHOLDER
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: sarif_results
+          path: codeguru-results*.json

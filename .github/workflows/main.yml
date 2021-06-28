@@ -60,7 +60,7 @@ jobs:
 
       - name: Checkout the CodeGuru Reviewer Action repository
         uses: actions/checkout@v2
-        if: ${{ always() }}
+        if: ${{ github.event_name != 'push' }}
         with:
           repository: vijejain/cicd-actions-bugbash
           ref: refs/heads/main

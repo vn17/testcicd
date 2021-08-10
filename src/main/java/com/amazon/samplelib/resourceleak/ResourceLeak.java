@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPOutputStream;
 
 public class ResourceLeak {
+    // test
 
     private AmazonS3 amazonS3;
 

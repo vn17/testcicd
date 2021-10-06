@@ -49,11 +49,11 @@ jobs:
       #    docker pull ${{ secrets.ECR_URI }}
       #    docker image tag ${{ secrets.ECR_URI }} codeguru:latest
 
-      - name: Configure AWS Credentials CodeGuru
-        uses: aws-actions/configure-aws-credentials@v1
-        if: ${{ always() }}
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
+#       - name: Configure AWS Credentials CodeGuru
+#         uses: aws-actions/configure-aws-credentials@v1
+#         if: ${{ always() }}
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: us-west-2
 

@@ -52,7 +52,7 @@ jobs:
           echo "hello world"; pwd; ls;
           
       - name: test using local action yml
-        uses: ./.github/actions/action
+        uses: ./.github/actions
         if: ${{ always() }}
         with:
           s3_bucket: codeguru-reviewer-test-cicd-bucket

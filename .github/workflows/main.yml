@@ -47,9 +47,11 @@ jobs:
           docker pull ${{ secrets.ECR_URI }}
           docker image tag ${{ secrets.ECR_URI }} codeguru:latest
       
-      - name: current path
+      - name: change the file timestamp before 1980
         run: 
-          echo "hello world"; pwd; ls;
+          stat file_with_timestamp_before_1980.txt; 
+          touch -a -m -t 191512180130.09 file_with_timestamp_before_1980.txt; 
+          stat file_with_timestamp_before_1980.txt;
           
       - name: test using local action yml
         uses: ./.github/actions

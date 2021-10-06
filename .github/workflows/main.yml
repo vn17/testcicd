@@ -48,7 +48,8 @@ jobs:
         run: |
           # docker pull ${{ secrets.ECR_URI }}
           docker pull ${{ secrets.ECR_URI_PROD }}
-          docker image tag ${{ secrets.ECR_URI }} codeguru:latest
+          # docker image tag ${{ secrets.ECR_URI }} codeguru:latest
+          docker image tag ${{ secrets.ECR_URI_PROD }} codeguru:latest
       
       - name: change the file timestamp before 1980
         run: 

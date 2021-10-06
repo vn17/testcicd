@@ -46,9 +46,13 @@ jobs:
         run: |
           docker pull ${{ secrets.ECR_URI }}
           docker image tag ${{ secrets.ECR_URI }} codeguru:latest
+      
+      - name: current path
+        run: 
+          echo "hello world"; pwd
           
       - name: test using local action yml
-        uses: .github/actions/action@v1
+        uses: ./.github/actions/action
         if: ${{ always() }}
         with:
           s3_bucket: codeguru-reviewer-test-cicd-bucket

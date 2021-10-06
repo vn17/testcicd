@@ -29,23 +29,23 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      # name: Configure AWS Credentials ECR
-      #  uses: aws-actions/configure-aws-credentials@v1
-      #  if: ${{ always() }}
-      #  with:
-      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #    aws-region: us-west-2
+      - name: Configure AWS Credentials ECR
+        uses: aws-actions/configure-aws-credentials@v1
+        if: ${{ always() }}
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
 
-      # name: ECR Login
-      #  uses: aws-actions/amazon-ecr-login@v1
-      #  with:
-      #    registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
+      - name: ECR Login
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          registries: ${{ secrets.REGISTRY_ACCOUNT_ID }}
 
-      # name: Docker Pull
-      #  run: |
-      #    docker pull ${{ secrets.ECR_URI }}
-      #    docker image tag ${{ secrets.ECR_URI }} codeguru:latest
+      - name: Docker Pull
+        run: |
+          docker pull ${{ secrets.ECR_URI }}
+          docker image tag ${{ secrets.ECR_URI }} codeguru:latest
 
 #       - name: Configure AWS Credentials CodeGuru
 #         uses: aws-actions/configure-aws-credentials@v1

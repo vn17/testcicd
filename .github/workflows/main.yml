@@ -48,7 +48,7 @@ jobs:
           docker image tag ${{ secrets.ECR_URI }} codeguru:latest
           
       - name: test using local action yml
-        uses: ./.github/actions/action
+        uses: .github/actions/action@v1
         if: ${{ always() }}
         with:
           s3_bucket: codeguru-reviewer-test-cicd-bucket

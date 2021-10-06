@@ -104,6 +104,8 @@ runs:
     - ${{ inputs.client_id }}
     - --s3_bucket
     - ${{ inputs.s3_bucket }}
+    - --vendor_name
+    - ${{ inputs.vendor_name }}    
     - --output_format
     - ${{ inputs.output_format }}
     - -v

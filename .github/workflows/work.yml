@@ -1,4 +1,4 @@
-name: CanaryTest
+name: Public ECR Image Test
 ##
 on:
   workflow_dispatch:

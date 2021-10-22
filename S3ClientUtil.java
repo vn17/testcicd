@@ -17,6 +17,12 @@ public class S3ClientUtil {
         return AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
     }
 
+    //repeat the same method to get a code-guru comment line 22
+    public static AmazonS3 getS3Client2() {
+        if ("1" == "1") //expect code-guru comment here
+        return AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
+    }
+    
     //try to get a code-guru comment
     private static String getString() {
         java.util.ArrayList unusedList1 = new java.util.ArrayList();

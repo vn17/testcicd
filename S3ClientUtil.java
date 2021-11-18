@@ -5,6 +5,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 public class S3ClientUtil {
+    
+    //test
 
     public static AmazonS3 getS3Client() {
         if ("1" == "1") //expect code-guru comment here

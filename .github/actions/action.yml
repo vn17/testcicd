@@ -15,6 +15,9 @@ inputs:
   build_path:
     description: 'Path to build artifact(s) - jar files in this directory will be uploaded for review'
     required: false
+  build_path_list:
+    description: 'A list of path to build artifact(s) - jar files in this directory will be uploaded for review'
+    required: false
   destination_commit:
     description: 'SHA of next commit to be committed to source code repository after an event'
     default: ${{ github.event.before || github.event.pull_request.base.sha }}
@@ -80,6 +83,8 @@ runs:
     - ${{ inputs.source_path }}
     - --build_path
     - ${{ inputs.build_path }}
+    - --build_path_list
+    - ${{ inputs.build_path_list }}
     - --destination_branch
     - ${{ inputs.destination_branch }}
     - --before_commit_sha

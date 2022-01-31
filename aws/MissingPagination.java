@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// test
+
 public class CFNHelperSingleton {
     private static CFNHelperSingleton instance = new CFNHelperSingleton();
     private Map<String, AmazonCloudFormation> cfnPerRegionMap = new HashMap<>();

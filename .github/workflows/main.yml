@@ -55,7 +55,7 @@ jobs:
         uses: ./.github/actions
         if: ${{ always() }}
         with:
-          s3_bucket: codeguru-reviewer-test-cicd
+          s3_bucket: codeguru-reviewer-test-cicd-bucket-yueny
           build_path: 'buildFiles'
           
       - name: Upload review result

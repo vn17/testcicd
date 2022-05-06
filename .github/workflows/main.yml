@@ -57,7 +57,8 @@ jobs:
         with:
           s3_bucket: codeguru-reviewer-test-cicd-bucket-yueny
           build_path: 'buildFiles'
-          
+          build_path_list: samplelib1 samplelib2
+
       - name: Upload review result
         if: ${{ github.event_name != 'push' }}
         uses: github/codeql-action/upload-sarif@v1

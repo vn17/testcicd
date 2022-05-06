@@ -55,7 +55,7 @@ jobs:
         uses: ./.github/actions
         if: ${{ always() }}
         with:
-          s3_bucket: codeguru-reviewer-test-cicd-bucket-yueny
+          s3_bucket: codeguru-reviewer-test-cicd-bucket-yueny-iad
           build_path: 'buildFiles'
           build_path_list: samplelib1
 
